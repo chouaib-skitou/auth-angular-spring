@@ -1,6 +1,6 @@
 # Spring boot and angular 17 auth system with JWT
 
-This README provides instructions for setting up and running the Angular 17 and Spring Boot project. The project is divided into two main parts: the frontend, built with Angular 17, and the backend, developed using Spring Boot.
+This README provides instructions for setting up and running the Spring boot and angular 17 auth system with JWT project. The project is divided into two main parts: the frontend, built with Angular 17, and the backend, developed using Spring Boot.
 
 ## Prerequisites
 
