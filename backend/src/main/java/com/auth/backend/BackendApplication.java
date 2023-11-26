@@ -1,4 +1,4 @@
-package com.auth.jwt.backend;
+package com.auth.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
