@@ -8,6 +8,7 @@ import { AuthContentComponent } from './auth-content/auth-content.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
 import { SwitchComponent } from './switch/switch.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SwitchComponent } from './switch/switch.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

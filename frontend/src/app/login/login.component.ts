@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+
+  @Output() onSubmitLoginEvent = new EventEmitter();
+
+  login: string = '';
+  password: string = '';
+
+  onSubmitLogin() {
+    this.onSubmitLoginEvent.emit({login: this.login, password: this.password});
+  }
 
 }
