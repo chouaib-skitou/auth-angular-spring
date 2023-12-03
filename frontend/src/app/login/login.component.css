@@ -1,0 +1,21 @@
+ul li {
+  cursor: pointer;
+  color: white;
+  font-weight: 400;
+  font-size: 18px;
+}
+ul li.active {
+  background-color: #000000;
+  color: white;
+  font-weight: 400;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+ul li.active a{
+  color: white;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+
