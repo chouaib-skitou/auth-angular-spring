@@ -2,6 +2,7 @@ package com.auth.backend.services;
 
 
 import com.auth.backend.dto.CredentialsDto;
+import com.auth.backend.dto.SignUpDto;
 import com.auth.backend.dto.UserDto;
 import com.auth.backend.entities.User;
 import com.auth.backend.exceptions.AppException;
@@ -13,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.nio.CharBuffer;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -29,5 +31,20 @@ public class UserService {
             return userMapper.toUserDto(user);
         }
         throw new AppException("Wrong password", HttpStatus.BAD_REQUEST);
+    }
+
+    public UserDto register(SignUpDto signUpDto) {
+        Optional<User> oUser = userRepository.findByLogin(signUpDto.login());
+
+        if (oUser.isPresent()) {
+            throw new AppException("User already exists", HttpStatus.BAD_REQUEST);
+        }
+
+        User user = userMapper.signUpDtoToUser(signUpDto);
+
+        user.setPassword(passwordEncoder.encode(CharBuffer.wrap(signUpDto.password())));
+        User savedUser = userRepository.save(user);
+
+        return userMapper.toUserDto(savedUser);
     }
 }

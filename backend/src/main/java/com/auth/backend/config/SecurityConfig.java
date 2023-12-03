@@ -1,4 +1,4 @@
-/*package com.auth.backend.config;
+package com.auth.backend.config;
 
 
 import lombok.RequiredArgsConstructor;
@@ -19,12 +19,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
-                .sessionManagement(customiser -> customiser.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests((requests) -> requests.requestMatchers(HttpMethod.POST, "/api/v1/login").permitAll()
+                .sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests((requests) -> requests.requestMatchers(HttpMethod.POST, "/api/v1/login","/api/v1/register").permitAll()
                 .anyRequest().authenticated()
             );
 
         return http.build();
     }
 }
-*/
