@@ -1,6 +1,7 @@
 package com.auth.backend.controller;
 
 
+import com.auth.backend.config.UserAuthProvider;
 import com.auth.backend.dto.CredentialsDto;
 import com.auth.backend.dto.SignUpDto;
 import com.auth.backend.dto.UserDto;
@@ -18,11 +19,13 @@ import java.net.URI;
 public class AuthController {
 
     private final UserService userService;
+    private final UserAuthProvider userAuthProvider;
 
     //login
     @PostMapping("/login")
     public ResponseEntity<UserDto> login(@RequestBody CredentialsDto credentialsDto) {
         UserDto user = userService.login(credentialsDto);
+        user.setToken(userAuthProvider.createToken(user));
         return ResponseEntity.ok(user);
 
     }
@@ -31,6 +34,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<UserDto> register(@RequestBody SignUpDto signUpDto) {
         UserDto user = userService.register(signUpDto);
+        user.setToken(userAuthProvider.createToken(user));
         return ResponseEntity.created(URI.create("/api/v1/users/" + user.getId())).body(user);
     }
 }
