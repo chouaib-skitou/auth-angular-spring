@@ -7,6 +7,11 @@ import {AxiosService} from "../axios.service";
   styleUrl: './switch.component.css'
 })
 export class SwitchComponent {
+  componentToShow: string = 'welcome';
+
+  showComponent(componentName: string): void {
+    this.componentToShow = componentName;
+  }
 
   constructor(
     private axiosService: AxiosService,
@@ -20,6 +25,11 @@ export class SwitchComponent {
         login: input.login,
         password: input.password,
       }
+    ).then(
+      response => {
+        this.axiosService.setToken(response.data.token);
+        this.componentToShow = "messages";
+      }
     );
   }
   onRegister(input: any): void {
@@ -32,7 +42,12 @@ export class SwitchComponent {
         login: input.login,
         password: input.password,
       }
-    );
+    ).then(
+      response => {
+        this.axiosService.setToken(response.data.token);
+        this.componentToShow = "messages";
+      }
+      );
   }
 
 }

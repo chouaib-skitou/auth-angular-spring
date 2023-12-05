@@ -9,6 +9,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
 import { SwitchComponent } from './switch/switch.component';
 import {FormsModule} from "@angular/forms";
+import { ButtonsComponent } from './buttons/buttons.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {FormsModule} from "@angular/forms";
     AuthContentComponent,
     WelcomeComponent,
     LoginComponent,
-    SwitchComponent
+    SwitchComponent,
+    ButtonsComponent
   ],
   imports: [
     BrowserModule,
